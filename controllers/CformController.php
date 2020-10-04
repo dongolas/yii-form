@@ -18,9 +18,9 @@ class CformController extends Controller
             throw new NotFoundHttpException("The cform was not found.");
         }
 
-        $form_tasks = Formstasks::findAll('id_form');
-       
+        $form_tasks = Formstasks::findAll(['id_form' => $cform->id]);
 
+        
         if (!$form_tasks) {
             throw new NotFoundHttpException("Δεν βρέθηκαν πεδία!");
         }
