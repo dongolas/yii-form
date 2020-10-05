@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\web\View;
 
 $form = ActiveForm::begin([
     'id' => 'custom-form',
@@ -10,12 +11,10 @@ $form = ActiveForm::begin([
 
     <?= $form->field($cform, 'form_title') ?>
     ...other input fields...
+    <?= $form->field($cform, 'id') ?>
     
-    <h1><?= $this->title = $cform->form_title; ?></h1>
+    <?= print_r(array_sum($form_tasks)). '<br/>' ?>
+    <?=$form_tasks[0]->label?> : <input type="text" name="name" value="">
     <?= print_r($form_tasks) ?>
-    foreach ($new_form_tasks as $o) {
-    echo $new_m[$o];
-}
-
     <?= Html::submitButton('ΟΚ', ['class' => 'btn btn-primary']) ?>
 <?php ActiveForm::end() ?>

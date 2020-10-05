@@ -5,7 +5,7 @@ use Yii;
 use yii\base\Model;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-
+use yii\data\ActiveDataProvider;
 use app\models\Forms;
 use app\models\Formstasks;
 
@@ -19,6 +19,8 @@ class CformController extends Controller
         }
 
         $form_tasks = Formstasks::findAll(['id_form' => $cform->id]);
+
+        $num_form_tasks = $provider->getCount();
 
         
         if (!$form_tasks) {
