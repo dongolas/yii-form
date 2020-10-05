@@ -15,31 +15,14 @@ class CformController extends Controller
     {
         $cform = Forms::findOne($id);
         if (!$cform) {
-            throw new NotFoundHttpException("The cform was not found.");
+            throw new NotFoundHttpException("Δεν βρέθηκε φόρμα!");
         }
 
         $form_tasks = Formstasks::findAll(['id_form' => $cform->id]);
-
-        $num_form_tasks = $provider->getCount();
-
         
         if (!$form_tasks) {
             throw new NotFoundHttpException("Δεν βρέθηκαν πεδία!");
-        }
-   
-/*         $cform->scenario = 'index';
-        $form_tasks->scenario = 'index'; */
-         
-/*         if ($cform->load(Yii::$app->request->post()) && $form_tasks->load(Yii::$app->request->post())) {
-            $isValid = $cform->validate();
-            $isValid = $form_tasks->validate() && $isValid;
-            if ($isValid) {
-                $cform->save(false);
-                $form_tasks->save(false);
-                return $this->redirect(['cform/view', 'id' => $id]);
-            }
-        }
-  */       
+        }  
 
         return $this->render('cform', [
             'cform' => $cform,
