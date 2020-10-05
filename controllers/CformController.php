@@ -8,6 +8,7 @@ use yii\web\NotFoundHttpException;
 use yii\data\ActiveDataProvider;
 use app\models\Forms;
 use app\models\Formstasks;
+use yii\data\ArrayDataProvider;
 
 class CformController extends Controller
 {
@@ -22,8 +23,8 @@ class CformController extends Controller
         
         if (!$form_tasks) {
             throw new NotFoundHttpException("Δεν βρέθηκαν πεδία!");
-        }  
-
+        }
+        
         return $this->render('cform', [
             'cform' => $cform,
             'form_tasks' => $form_tasks,
